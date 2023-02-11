@@ -10,20 +10,23 @@ class WelcomeScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         body: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            // Image.asset(
-            //   "profile1.png",
-            //   height: height * 0.6,
-            // ),
-            Container(
-              color: Colors.white10,
-              height: height * 0.6,
+            Image.asset(
+              "assets/welcome/1.jpg",
+              height: height * 0.4,
+            ),
+            const SizedBox(
+              height: 20,
             ),
             (const Character(
               headtext: "Welcome",
               fontsize: 20,
             )),
+            const SizedBox(
+              height: 70,
+            ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Row(
@@ -37,7 +40,9 @@ class WelcomeScreen extends StatelessWidget {
                         }));
                       },
                       style: OutlinedButton.styleFrom(
-                        shape: const RoundedRectangleBorder(),
+                        shape: const RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(20))),
                         side: const BorderSide(color: Colors.black12),
                       ),
                       child: Character(
@@ -58,7 +63,9 @@ class WelcomeScreen extends StatelessWidget {
                           }));
                         },
                         style: ElevatedButton.styleFrom(
-                          shape: const RoundedRectangleBorder(),
+                          shape: const RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20))),
                           side: const BorderSide(color: Colors.black12),
                         ),
                         child: Character(

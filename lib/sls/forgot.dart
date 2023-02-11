@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:loans/exports.dart';
 
-class SignupScreen extends StatelessWidget {
-  const SignupScreen({super.key});
+class ForgotPass extends StatefulWidget {
+  const ForgotPass({super.key});
 
+  @override
+  State<ForgotPass> createState() => _ForgotPassState();
+}
+
+class _ForgotPassState extends State<ForgotPass> {
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height * 0.6;
@@ -47,36 +51,6 @@ class SignupScreen extends StatelessWidget {
                     const SizedBox(
                       height: 40,
                     ),
-                    TextFormField(
-                      keyboardType: TextInputType.visiblePassword,
-                      style: const TextStyle(color: Colors.black),
-                      cursorColor: Colors.green,
-                      decoration: const InputDecoration(
-                        prefixIcon: Icon(
-                          Icons.key,
-                          color: Colors.green,
-                        ),
-                        labelText: "Enter Your Password",
-                        hintText: "Password",
-                        suffixIcon: IconButton(
-                          onPressed: null,
-                          icon: Icon(
-                            Icons.remove_red_eye_sharp,
-                            color: Colors.green,
-                          ),
-                        ),
-                        labelStyle: TextStyle(color: Colors.green),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.green),
-                        ),
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.green),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 30,
-                    ),
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
@@ -90,7 +64,7 @@ class SignupScreen extends StatelessWidget {
                           ),
                           child: const Character(
                             fontsize: 20,
-                            headtext: "Sign Up",
+                            headtext: "NEXT",
                           )),
                     ),
                   ],

@@ -14,13 +14,9 @@ class LoginScreen extends StatelessWidget {
         padding: const EdgeInsets.all(20),
         child: Column(
           children: [
-            // Image.asset(
-            //   "profile1.png",
-            //   height: height * 0.6,
-            // ),
             Container(
               color: Colors.white10,
-              height: height * 0.4,
+              height: height * 0.2,
             ),
             const Character(headtext: "Login to Your Account", fontsize: 15),
             Form(
@@ -30,25 +26,51 @@ class LoginScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     TextFormField(
+                      keyboardType: TextInputType.emailAddress,
+                      style: const TextStyle(color: Colors.black),
+                      cursorColor: Colors.green,
                       decoration: const InputDecoration(
-                        prefixIcon: Icon(Icons.person_add_alt_1_outlined),
+                        prefixIcon: Icon(
+                          Icons.person_add_alt_1_outlined,
+                          color: Colors.green,
+                        ),
                         labelText: "Enter Your Email",
-                        hintText: "Email",
-                        border: OutlineInputBorder(),
+                        labelStyle: TextStyle(color: Colors.green),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.green),
+                        ),
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.green),
+                        ),
                       ),
                     ),
                     const SizedBox(
                       height: 20,
                     ),
                     TextFormField(
+                      keyboardType: TextInputType.visiblePassword,
+                      style: const TextStyle(color: Colors.black),
+                      cursorColor: Colors.green,
                       decoration: const InputDecoration(
-                        prefixIcon: Icon(Icons.password_outlined),
+                        prefixIcon: Icon(
+                          Icons.key,
+                          color: Colors.green,
+                        ),
                         labelText: "Enter Your Password",
                         hintText: "Password",
-                        border: OutlineInputBorder(),
                         suffixIcon: IconButton(
                           onPressed: null,
-                          icon: Icon(Icons.remove_red_eye_sharp),
+                          icon: Icon(
+                            Icons.remove_red_eye_sharp,
+                            color: Colors.green,
+                          ),
+                        ),
+                        labelStyle: TextStyle(color: Colors.green),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.green),
+                        ),
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.green),
                         ),
                       ),
                     ),
@@ -92,15 +114,23 @@ class LoginScreen extends StatelessWidget {
                             width: 5.0,
                           ),
                           const Text('Sign-in with Google'),
+                          const SizedBox(
+                            height: 10,
+                          ),
                           TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(context, MaterialPageRoute(
+                                  builder: (BuildContext context) {
+                                return const SignupScreen();
+                              }));
+                            },
                             child: Text.rich(
                               TextSpan(
                                   text: "Already Have An Account?",
                                   style: GoogleFonts.nunitoSans(
                                     textStyle: const TextStyle(
                                         color: Colors.black,
-                                        fontSize: 10,
+                                        fontSize: 15,
                                         fontWeight: FontWeight.w500),
                                   ),
                                   children: [
