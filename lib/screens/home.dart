@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:loans/utils/theme.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -10,6 +11,11 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        title: Character(headtext: "loans", fontsize: 10),
+      ),
+      body: Container(),
+    );
   }
 }

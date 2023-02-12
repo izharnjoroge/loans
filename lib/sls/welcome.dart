@@ -36,13 +36,14 @@ class WelcomeScreen extends StatelessWidget {
                       onPressed: () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (BuildContext context) {
-                          return const LoginScreen();
+                          return LoginScreen();
                         }));
                       },
                       style: OutlinedButton.styleFrom(
                         shape: const RoundedRectangleBorder(
                             borderRadius:
                                 BorderRadius.all(Radius.circular(20))),
+                        backgroundColor: Colors.green,
                         side: const BorderSide(color: Colors.black12),
                       ),
                       child: Character(
@@ -59,7 +60,7 @@ class WelcomeScreen extends StatelessWidget {
                         onPressed: () {
                           Navigator.push(context, MaterialPageRoute(
                               builder: (BuildContext context) {
-                            return const SignupScreen();
+                            return SignupScreen();
                           }));
                         },
                         style: ElevatedButton.styleFrom(
@@ -67,6 +68,7 @@ class WelcomeScreen extends StatelessWidget {
                               borderRadius:
                                   BorderRadius.all(Radius.circular(20))),
                           side: const BorderSide(color: Colors.black12),
+                          backgroundColor: Colors.green,
                         ),
                         child: Character(
                             headtext: "Signup".toUpperCase(), fontsize: 10)),
