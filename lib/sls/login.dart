@@ -7,8 +7,7 @@ import 'package:get/get.dart';
 import 'package:loans/sls/controller.dart';
 
 class LoginScreen extends StatelessWidget {
-  final _formKey = GlobalKey<FormState>();
-  LoginScreen({super.key});
+  const LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -7,12 +7,16 @@ class WelcomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width * 0.8;
     return SafeArea(
       child: Scaffold(
         body: Column(
           // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            const SizedBox(
+              height: 20,
+            ),
             Image.asset(
               "assets/welcome/1.jpg",
               height: height * 0.4,
@@ -25,18 +29,20 @@ class WelcomeScreen extends StatelessWidget {
               fontsize: 20,
             )),
             const SizedBox(
-              height: 70,
+              height: 50,
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Expanded(
+                  SizedBox(
+                    width: width,
                     child: OutlinedButton(
                       onPressed: () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (BuildContext context) {
-                          return LoginScreen();
+                          return const LoginScreen();
                         }));
                       },
                       style: OutlinedButton.styleFrom(
@@ -55,24 +61,24 @@ class WelcomeScreen extends StatelessWidget {
                   const SizedBox(
                     width: 10,
                   ),
-                  Expanded(
-                    child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(
-                              builder: (BuildContext context) {
-                            return SignupScreen();
-                          }));
-                        },
-                        style: ElevatedButton.styleFrom(
-                          shape: const RoundedRectangleBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20))),
-                          side: const BorderSide(color: Colors.black12),
-                          backgroundColor: Colors.green,
-                        ),
-                        child: Character(
-                            headtext: "Signup".toUpperCase(), fontsize: 10)),
-                  )
+                  // Expanded(
+                  //   child: ElevatedButton(
+                  //       onPressed: () {
+                  //         Navigator.push(context, MaterialPageRoute(
+                  //             builder: (BuildContext context) {
+                  //           return SignupScreen();
+                  //         }));
+                  //       },
+                  //       style: ElevatedButton.styleFrom(
+                  //         shape: const RoundedRectangleBorder(
+                  //             borderRadius:
+                  //                 BorderRadius.all(Radius.circular(20))),
+                  //         side: const BorderSide(color: Colors.black12),
+                  //         backgroundColor: Colors.green,
+                  //       ),
+                  //       child: Character(
+                  //           headtext: "Signup".toUpperCase(), fontsize: 10)),
+                  // )
                 ],
               ),
             ),

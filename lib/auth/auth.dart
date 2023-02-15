@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
-import 'package:loans/screens/home.dart';
-import 'package:loans/sls/welcome.dart';
+import 'package:loans/exports.dart';
 
 class Auth extends GetxController {
   static Auth get instance => Get.find();
@@ -18,7 +17,7 @@ class Auth extends GetxController {
   _setInitialScreen(User? user) {
     user == null
         ? Get.offAll(() => const WelcomeScreen())
-        : Get.offAll(() => const HomeScreen());
+        : Get.offAll(() => const NavScreen());
   }
 
   Future<void> createUserWithEmailAndPassword(
@@ -27,7 +26,7 @@ class Auth extends GetxController {
       await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
       firebaseUser.value != null
-          ? Get.offAll(() => const HomeScreen())
+          ? Get.offAll(() => const NavScreen())
           : Get.to(() => const WelcomeScreen());
     } on FirebaseAuthException catch (e) {
       final ex = SignUpWithEmailAndPasswordFailure.code(e.code);
@@ -44,7 +43,7 @@ class Auth extends GetxController {
     try {
       await _auth.signInWithEmailAndPassword(email: email, password: password);
       firebaseUser.value != null
-          ? Get.offAll(() => const HomeScreen())
+          ? Get.offAll(() => const NavScreen())
           : Get.to(() => const WelcomeScreen());
     } on FirebaseAuthException catch (e) {
       final ex = SignUpWithEmailAndPasswordFailure.code(e.code);
