@@ -17,10 +17,10 @@ class WelcomeScreen extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            Image.asset(
-              "assets/welcome/1.jpg",
-              height: height * 0.4,
-            ),
+            // Image.asset(
+            //   "assets/welcome/1.jpg",
+            //   height: height * 0.4,
+            // ),
             const SizedBox(
               height: 20,
             ),

@@ -1,15 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import 'package:loans/exports.dart';
 
-class Request extends StatelessWidget {
+class Request extends StatefulWidget {
+  const Request({super.key});
+
+  @override
+  State<Request> createState() => _RequestState();
+}
+
+class _RequestState extends State<Request> {
   final _formKey = GlobalKey<FormState>();
-  Request({super.key});
+  final controller = Get.put(RequestController());
+  // @override
+  // void dispose() {
+  //   controller.dispose();
+  //   super.dispose();
+  // }
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(RequestController());
     var width = MediaQuery.of(context).size.width * 0.8;
     return SafeArea(
       child: Scaffold(
@@ -33,6 +43,7 @@ class Request extends StatelessWidget {
                       controller: controller.loantype,
                       style: const TextStyle(color: Colors.black),
                       cursorColor: Colors.green,
+                      textInputAction: TextInputAction.next,
                       decoration: const InputDecoration(
                         prefixIcon: Icon(
                           Icons.type_specimen,
@@ -55,6 +66,7 @@ class Request extends StatelessWidget {
                       controller: controller.name,
                       style: const TextStyle(color: Colors.black),
                       cursorColor: Colors.green,
+                      textInputAction: TextInputAction.next,
                       decoration: const InputDecoration(
                         prefixIcon: Icon(
                           Icons.person,
@@ -78,6 +90,7 @@ class Request extends StatelessWidget {
                       controller: controller.email,
                       style: const TextStyle(color: Colors.black),
                       cursorColor: Colors.green,
+                      textInputAction: TextInputAction.next,
                       decoration: const InputDecoration(
                         prefixIcon: Icon(
                           Icons.email,
@@ -101,6 +114,7 @@ class Request extends StatelessWidget {
                       controller: controller.idnumber,
                       style: const TextStyle(color: Colors.black),
                       cursorColor: Colors.green,
+                      textInputAction: TextInputAction.next,
                       decoration: const InputDecoration(
                         prefixIcon: Icon(
                           Icons.key_off,
@@ -124,6 +138,7 @@ class Request extends StatelessWidget {
                       controller: controller.phonenumber,
                       style: const TextStyle(color: Colors.black),
                       cursorColor: Colors.green,
+                      textInputAction: TextInputAction.next,
                       decoration: const InputDecoration(
                         prefixIcon: Icon(
                           Icons.key,
@@ -144,9 +159,10 @@ class Request extends StatelessWidget {
                       height: 20,
                     ),
                     TextFormField(
-                      controller: controller.amount,
+                      controller: controller.krapin,
                       style: const TextStyle(color: Colors.black),
                       cursorColor: Colors.green,
+                      textInputAction: TextInputAction.next,
                       decoration: const InputDecoration(
                         prefixIcon: Icon(
                           Icons.key,
@@ -167,9 +183,10 @@ class Request extends StatelessWidget {
                       height: 30,
                     ),
                     TextFormField(
-                      controller: controller.krapin,
+                      controller: controller.amount,
                       style: const TextStyle(color: Colors.black),
                       cursorColor: Colors.green,
+                      textInputAction: TextInputAction.done,
                       decoration: const InputDecoration(
                         prefixIcon: Icon(
                           Icons.key,
@@ -208,6 +225,10 @@ class Request extends StatelessWidget {
                               RequestController.instance
                                   .createRequest(requests);
                             }
+                            Navigator.push(context, MaterialPageRoute(
+                                builder: (BuildContext context) {
+                              return const HomeScreen();
+                            }));
                           },
                           style: ElevatedButton.styleFrom(
                             shape: const RoundedRectangleBorder(

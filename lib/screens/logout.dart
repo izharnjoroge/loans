@@ -12,7 +12,7 @@ class LogOut extends StatelessWidget {
         body: Column(
           children: [
             Padding(
-              padding: EdgeInsets.fromLTRB(40, 300, 20, 200),
+              padding: const EdgeInsets.fromLTRB(40, 300, 20, 200),
               child: SizedBox(
                 width: width,
                 child: ElevatedButton(

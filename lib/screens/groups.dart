@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:loans/exports.dart';
 
 class Group extends StatefulWidget {
   const Group({super.key});
@@ -13,10 +14,22 @@ class _GroupState extends State<Group> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: const Text("View Groups"),
-          centerTitle: true,
+          elevation: 4.0,
+          foregroundColor: Colors.black,
+          backgroundColor: Colors.white,
           leading: const BackButton(),
-          backgroundColor: Colors.green,
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Expanded(
+                child: Contact(
+                  onPressed: () {},
+                  butttonText: "Add Group",
+                  icon: const Icon(Icons.note),
+                ),
+              ),
+            ],
+          ),
         ),
         body: ListView(),
       ),

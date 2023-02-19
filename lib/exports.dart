@@ -14,3 +14,7 @@ export '../screens/request.dart';
 export '../screens/customers.dart';
 export '../screens/groups.dart';
 export '../sls/controller.dart';
+export '../auth/requestauth.dart';
+export '../auth/requestmodel.dart';
+export '../auth/loanmodel.dart';
+export '../auth/loanauth.dart';
