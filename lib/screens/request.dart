@@ -232,10 +232,15 @@ class _RequestState extends State<Request> {
                               RequestController.instance
                                   .createRequest(requests);
                             }
-                            Navigator.push(context, MaterialPageRoute(
-                                builder: (BuildContext context) {
-                              return const HomeScreen();
-                            }));
+                            setState(() {
+                              controller.name.clear();
+                              controller.loantype.clear();
+                              controller.email.clear();
+                              controller.idnumber.clear();
+                              controller.amount.clear();
+                              controller.krapin.clear();
+                              controller.phonenumber.clear();
+                            });
                           },
                           style: ElevatedButton.styleFrom(
                             shape: const RoundedRectangleBorder(

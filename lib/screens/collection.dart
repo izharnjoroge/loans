@@ -12,7 +12,7 @@ class CollectionScreen extends StatefulWidget {
 class _CollectionScreenState extends State<CollectionScreen> {
   final _formKey = GlobalKey<FormState>();
   final controller = Get.put(Collection1Controller());
-
+  final controller2 = Get.put(AgentProfile());
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width * 0.8;
@@ -225,10 +225,15 @@ class _CollectionScreenState extends State<CollectionScreen> {
                               Collection1Controller.instance
                                   .createRequest(collections);
                             }
-                            Navigator.push(context, MaterialPageRoute(
-                                builder: (BuildContext context) {
-                              return const HomeScreen();
-                            }));
+                            setState(() {
+                              controller.name.clear();
+                              controller.member1.clear();
+                              controller.amount1.clear();
+                              controller.member2.clear();
+                              controller.amount2.clear();
+                              controller.member3.clear();
+                              controller.amount3.clear();
+                            });
                           },
                           style: ElevatedButton.styleFrom(
                             shape: const RoundedRectangleBorder(
