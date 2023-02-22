@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:loans/exports.dart';
+import 'package:loans/screens/collections1.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -10,6 +12,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final controller = Get.put(AgentProfile());
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width * 0.8;
@@ -27,14 +30,34 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             Padding(
               padding: const EdgeInsets.only(left: 40),
-              child: Text(
-                "Hello King",
-                style: GoogleFonts.nunitoSans(
-                  textStyle: const TextStyle(
-                      color: Colors.black45,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold),
-                ),
+              child: FutureBuilder(
+                future: controller.getAgent(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.done) {
+                    if (snapshot.hasData) {
+                      AgentModel requestData = snapshot.data as AgentModel;
+                      return Row(
+                        children: [
+                          Text(
+                            "Welcome: ${requestData.name.capitalize}",
+                            style: GoogleFonts.nunitoSans(
+                              textStyle: const TextStyle(
+                                  color: Colors.black45,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ],
+                      );
+                    } else if (snapshot.hasError) {
+                      return Center(child: Text(snapshot.error.toString()));
+                    } else {
+                      return const Center(child: Text("No Network"));
+                    }
+                  } else {
+                    return const Center(child: CircularProgressIndicator());
+                  }
+                },
               ),
             ),
             SizedBox(
@@ -140,6 +163,53 @@ class _HomeScreenState extends State<HomeScreen> {
                 onTap: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (BuildContext context) {
+                    return const CollectionsView();
+                  }));
+                },
+                child: Container(
+                  padding: const EdgeInsets.fromLTRB(5, 5, 5, 5),
+                  height: height3,
+                  width: width,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    color: Colors.white,
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Colors.black,
+                        spreadRadius: 1,
+                        blurRadius: 8,
+                        offset: Offset(0, 2),
+                      )
+                    ],
+                  ),
+                  child: Row(
+                    children: [
+                      Align(
+                        alignment: Alignment.center,
+                        child: Text(
+                          "Collections",
+                          style: GoogleFonts.nunitoSans(
+                            textStyle: const TextStyle(
+                                color: Colors.black45,
+                                fontSize: 25,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 50,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 40),
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (BuildContext context) {
                     return const Customer();
                   }));
                 },
@@ -187,7 +257,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 onTap: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (BuildContext context) {
-                    return const Group();
+                    return const GroupView();
                   }));
                 },
                 child: Container(

@@ -1,32 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:loans/exports.dart';
+import 'package:loans/screens/collections2.dart';
 
-class Customer extends StatefulWidget {
-  const Customer({super.key});
+class CollectionsView extends StatefulWidget {
+  const CollectionsView({super.key});
 
   @override
-  State<Customer> createState() => _CustomerState();
+  State<CollectionsView> createState() => _CollectionsViewState();
 }
 
-class _CustomerState extends State<Customer> {
-  final controller = Get.put(CustomerController());
-  // List<Map<String, dynamic>> _newCustomer = [];
-  // @override
-  // void initState() {
-  //   _newCustomer =  _customerRepo
-  //   super.initState();
-  // }
-
+class _CollectionsViewState extends State<CollectionsView> {
+  final controller = Get.put(CollectionController());
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: const Text("View Customers"),
-          centerTitle: true,
+          title: const Text("View Collections"),
           titleTextStyle:
               const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+          centerTitle: true,
           leading: const BackButton(),
           toolbarHeight: 60.2,
           toolbarOpacity: 0.8,
@@ -61,8 +55,8 @@ class _CustomerState extends State<Customer> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) => CustomerDetails(
-                                            requestModel:
+                                        builder: (context) => CollectionsView2(
+                                            collectionModel:
                                                 snapshot.data![index]),
                                       ));
                                 },
@@ -73,17 +67,6 @@ class _CustomerState extends State<Customer> {
                                   "Name: ${snapshot.data![index].name.capitalize}",
                                   style: const TextStyle(
                                       fontWeight: FontWeight.bold),
-                                ),
-                                subtitle: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "Phone Number: ${snapshot.data![index].phonenumber}",
-                                      style: const TextStyle(
-                                          fontStyle: FontStyle.normal,
-                                          fontWeight: FontWeight.w400),
-                                    ),
-                                  ],
                                 ),
                               ),
                               const SizedBox(

@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:loans/exports.dart';
-import 'package:email_validator/email_validator.dart';
 
-class Request extends StatefulWidget {
-  const Request({super.key});
+class CollectionScreen extends StatefulWidget {
+  const CollectionScreen({super.key});
 
   @override
-  State<Request> createState() => _RequestState();
+  State<CollectionScreen> createState() => _CollectionScreenState();
 }
 
-class _RequestState extends State<Request> {
+class _CollectionScreenState extends State<CollectionScreen> {
   final _formKey = GlobalKey<FormState>();
-  final controller = Get.put(RequestController());
+  final controller = Get.put(Collection1Controller());
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +19,7 @@ class _RequestState extends State<Request> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: const Text("Request Loan"),
+          title: const Text("Collection Form"),
           titleTextStyle:
               const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
           centerTitle: true,
@@ -47,7 +46,7 @@ class _RequestState extends State<Request> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     TextFormField(
-                      controller: controller.loantype,
+                      controller: controller.name,
                       style: const TextStyle(color: Colors.black),
                       cursorColor: Colors.green,
                       textInputAction: TextInputAction.next,
@@ -56,7 +55,7 @@ class _RequestState extends State<Request> {
                           Icons.type_specimen,
                           color: Colors.green,
                         ),
-                        labelText: "Select Loan Type",
+                        labelText: "Group Name",
                         labelStyle: TextStyle(color: Colors.green),
                         focusedBorder: UnderlineInputBorder(
                           borderSide: BorderSide(color: Colors.green),
@@ -70,7 +69,7 @@ class _RequestState extends State<Request> {
                       height: 20,
                     ),
                     TextFormField(
-                      controller: controller.name,
+                      controller: controller.member1,
                       style: const TextStyle(color: Colors.black),
                       cursorColor: Colors.green,
                       textInputAction: TextInputAction.next,
@@ -79,8 +78,7 @@ class _RequestState extends State<Request> {
                           Icons.person,
                           color: Colors.green,
                         ),
-                        labelText: "Enter Your Name",
-                        hintText: "Name",
+                        labelText: "First Member",
                         labelStyle: TextStyle(color: Colors.green),
                         focusedBorder: UnderlineInputBorder(
                           borderSide: BorderSide(color: Colors.green),
@@ -94,7 +92,7 @@ class _RequestState extends State<Request> {
                       height: 20,
                     ),
                     TextFormField(
-                      controller: controller.email,
+                      controller: controller.amount1,
                       style: const TextStyle(color: Colors.black),
                       cursorColor: Colors.green,
                       textInputAction: TextInputAction.next,
@@ -103,8 +101,7 @@ class _RequestState extends State<Request> {
                           Icons.email,
                           color: Colors.green,
                         ),
-                        labelText: "Enter Your Email",
-                        hintText: "Email",
+                        labelText: "Amount",
                         labelStyle: TextStyle(color: Colors.green),
                         focusedBorder: UnderlineInputBorder(
                           borderSide: BorderSide(color: Colors.green),
@@ -118,17 +115,16 @@ class _RequestState extends State<Request> {
                       height: 20,
                     ),
                     TextFormField(
-                      controller: controller.idnumber,
+                      controller: controller.member2,
                       style: const TextStyle(color: Colors.black),
                       cursorColor: Colors.green,
                       textInputAction: TextInputAction.next,
                       decoration: const InputDecoration(
                         prefixIcon: Icon(
-                          Icons.insert_drive_file,
+                          Icons.key_off,
                           color: Colors.green,
                         ),
-                        labelText: "Enter Your ID Number",
-                        hintText: "Number",
+                        labelText: "Second Member",
                         labelStyle: TextStyle(color: Colors.green),
                         focusedBorder: UnderlineInputBorder(
                           borderSide: BorderSide(color: Colors.green),
@@ -142,31 +138,7 @@ class _RequestState extends State<Request> {
                       height: 20,
                     ),
                     TextFormField(
-                      controller: controller.phonenumber,
-                      style: const TextStyle(color: Colors.black),
-                      cursorColor: Colors.green,
-                      textInputAction: TextInputAction.next,
-                      decoration: const InputDecoration(
-                        prefixIcon: Icon(
-                          Icons.phone,
-                          color: Colors.green,
-                        ),
-                        labelText: "Enter Your Phone Number",
-                        hintText: "Password",
-                        labelStyle: TextStyle(color: Colors.green),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.green),
-                        ),
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.green),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    TextFormField(
-                      controller: controller.krapin,
+                      controller: controller.amount2,
                       style: const TextStyle(color: Colors.black),
                       cursorColor: Colors.green,
                       textInputAction: TextInputAction.next,
@@ -175,8 +147,30 @@ class _RequestState extends State<Request> {
                           Icons.key,
                           color: Colors.green,
                         ),
-                        labelText: "Enter KRA Pin",
-                        hintText: "Password",
+                        labelText: "Amount",
+                        labelStyle: TextStyle(color: Colors.green),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.green),
+                        ),
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.green),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    TextFormField(
+                      controller: controller.member3,
+                      style: const TextStyle(color: Colors.black),
+                      cursorColor: Colors.green,
+                      textInputAction: TextInputAction.next,
+                      decoration: const InputDecoration(
+                        prefixIcon: Icon(
+                          Icons.key,
+                          color: Colors.green,
+                        ),
+                        labelText: "Third Member",
                         labelStyle: TextStyle(color: Colors.green),
                         focusedBorder: UnderlineInputBorder(
                           borderSide: BorderSide(color: Colors.green),
@@ -190,17 +184,16 @@ class _RequestState extends State<Request> {
                       height: 30,
                     ),
                     TextFormField(
-                      controller: controller.amount,
+                      controller: controller.amount3,
                       style: const TextStyle(color: Colors.black),
                       cursorColor: Colors.green,
                       textInputAction: TextInputAction.done,
                       decoration: const InputDecoration(
                         prefixIcon: Icon(
-                          Icons.currency_exchange,
+                          Icons.key,
                           color: Colors.green,
                         ),
-                        labelText: "Enter Amount",
-                        hintText: "Amount",
+                        labelText: "Amount",
                         labelStyle: TextStyle(color: Colors.green),
                         focusedBorder: UnderlineInputBorder(
                           borderSide: BorderSide(color: Colors.green),
@@ -220,17 +213,17 @@ class _RequestState extends State<Request> {
                         child: ElevatedButton(
                           onPressed: () {
                             if (_formKey.currentState!.validate()) {
-                              final requests = RequestModel(
-                                  loantype: controller.loantype.text.trim(),
-                                  name: controller.name.text,
-                                  email: controller.email.text,
-                                  idnumber: controller.idnumber.text.trim(),
-                                  phonenumber:
-                                      controller.phonenumber.text.trim(),
-                                  krapin: controller.krapin.text.trim(),
-                                  amount: controller.amount.text.trim());
-                              RequestController.instance
-                                  .createRequest(requests);
+                              final collections = CollectionModel(
+                                name: controller.name.text,
+                                member1: controller.member1.text,
+                                amount1: controller.amount1.text.trim(),
+                                member2: controller.member2.text.trim(),
+                                amount2: controller.amount2.text.trim(),
+                                member3: controller.member3.text.trim(),
+                                amount3: controller.amount3.text.trim(),
+                              );
+                              Collection1Controller.instance
+                                  .createRequest(collections);
                             }
                             Navigator.push(context, MaterialPageRoute(
                                 builder: (BuildContext context) {
@@ -244,7 +237,7 @@ class _RequestState extends State<Request> {
                             side: const BorderSide(color: Colors.black12),
                             backgroundColor: Colors.green,
                           ),
-                          child: const Text("Request"),
+                          child: const Text("Submit"),
                         ),
                       ),
                     ),

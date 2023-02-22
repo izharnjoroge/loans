@@ -1,32 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:loans/exports.dart';
+import 'package:loans/screens/collection.dart';
 
-class Customer extends StatefulWidget {
-  const Customer({super.key});
+class GroupView extends StatefulWidget {
+  const GroupView({super.key});
 
   @override
-  State<Customer> createState() => _CustomerState();
+  State<GroupView> createState() => _GroupViewState();
 }
 
-class _CustomerState extends State<Customer> {
-  final controller = Get.put(CustomerController());
-  // List<Map<String, dynamic>> _newCustomer = [];
-  // @override
-  // void initState() {
-  //   _newCustomer =  _customerRepo
-  //   super.initState();
-  // }
-
+class _GroupViewState extends State<GroupView> {
+  final controller = Get.put(GroupController());
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: const Text("View Customers"),
-          centerTitle: true,
+          title: const Text("View Groups"),
           titleTextStyle:
               const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+          centerTitle: true,
           leading: const BackButton(),
           toolbarHeight: 60.2,
           toolbarOpacity: 0.8,
@@ -37,6 +31,28 @@ class _CustomerState extends State<Customer> {
           ),
           elevation: 0.00,
           backgroundColor: Colors.greenAccent[400],
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.add),
+              tooltip: 'Add Group',
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (BuildContext context) {
+                  return const Group();
+                }));
+              },
+            ),
+            IconButton(
+              icon: const Icon(Icons.comment),
+              tooltip: 'Add Collection',
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (BuildContext context) {
+                  return const CollectionScreen();
+                }));
+              },
+            ),
+          ],
         ),
         body: SingleChildScrollView(
           child: Padding(
@@ -61,29 +77,17 @@ class _CustomerState extends State<Customer> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) => CustomerDetails(
-                                            requestModel:
-                                                snapshot.data![index]),
+                                        builder: (context) => GroupView2(
+                                            groupModel: snapshot.data![index]),
                                       ));
                                 },
                                 iconColor: Colors.green,
                                 tileColor: Colors.green.withOpacity(0.1),
-                                leading: const Icon(Icons.person),
+                                leading: const Icon(Icons.group),
                                 title: Text(
                                   "Name: ${snapshot.data![index].name.capitalize}",
                                   style: const TextStyle(
                                       fontWeight: FontWeight.bold),
-                                ),
-                                subtitle: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "Phone Number: ${snapshot.data![index].phonenumber}",
-                                      style: const TextStyle(
-                                          fontStyle: FontStyle.normal,
-                                          fontWeight: FontWeight.w400),
-                                    ),
-                                  ],
                                 ),
                               ),
                               const SizedBox(

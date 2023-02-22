@@ -3,25 +3,25 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:loans/exports.dart';
 
-class RequestController extends GetxController {
-  static RequestController get instance => Get.find();
+class Collection1Controller extends GetxController {
+  static Collection1Controller get instance => Get.find();
 
-  final loantype = TextEditingController();
   final name = TextEditingController();
-  final email = TextEditingController();
-  final idnumber = TextEditingController();
-  final phonenumber = TextEditingController();
-  final krapin = TextEditingController();
-  final amount = TextEditingController();
+  final member1 = TextEditingController();
+  final amount1 = TextEditingController();
+  final member2 = TextEditingController();
+  final amount2 = TextEditingController();
+  final member3 = TextEditingController();
+  final amount3 = TextEditingController();
 
   final _db = FirebaseFirestore.instance;
 
-  createRequest(RequestModel requests) async {
+  createRequest(CollectionModel collections) async {
     await _db
-        .collection("Requests")
-        .add(requests.toJson())
+        .collection("Collections")
+        .add(collections.toJson())
         .whenComplete(
-          () => Get.snackbar("Success", "Request sent",
+          () => Get.snackbar("Success", "Collection recieved",
               snackPosition: SnackPosition.TOP,
               backgroundColor: Colors.green.withOpacity(0.1),
               colorText: Colors.black),
@@ -37,13 +37,13 @@ class RequestController extends GetxController {
     });
   }
 
-  Future<List<RequestModel>> allRequests() async {
+  Future<List<CollectionModel>> allRequests() async {
     final snapshot = await _db
-        .collection("Requests")
+        .collection("Collections")
         .orderBy("Name", descending: false)
         .get();
     final requestData =
-        snapshot.docs.map((e) => RequestModel.fromSnapshot(e)).toList();
+        snapshot.docs.map((e) => CollectionModel.fromSnapshot(e)).toList();
     return requestData;
   }
 }

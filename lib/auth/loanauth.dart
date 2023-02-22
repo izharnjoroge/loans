@@ -6,7 +6,8 @@ class LoansController1 extends GetxController {
   final _db = FirebaseFirestore.instance;
 
   Future<List<LoanModel>> allLoans() async {
-    final snapshot = await _db.collection("Loans").get();
+    final snapshot =
+        await _db.collection("Loans").orderBy("Name", descending: false).get();
     final requestLoans =
         snapshot.docs.map((e) => LoanModel.fromSnapshot(e)).toList();
     return requestLoans;

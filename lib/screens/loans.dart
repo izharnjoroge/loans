@@ -18,9 +18,19 @@ class _LoansState extends State<Loans> {
       child: Scaffold(
         appBar: AppBar(
           title: const Text("View Loan Types"),
+          titleTextStyle:
+              const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
           centerTitle: true,
           leading: const BackButton(),
-          backgroundColor: Colors.green,
+          toolbarHeight: 60.2,
+          toolbarOpacity: 0.8,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+                bottomRight: Radius.circular(25),
+                bottomLeft: Radius.circular(25)),
+          ),
+          elevation: 0.00,
+          backgroundColor: Colors.greenAccent[400],
         ),
         body: SingleChildScrollView(
           child: Container(
@@ -36,19 +46,25 @@ class _LoansState extends State<Loans> {
                         itemBuilder: (context, index) {
                           return Column(
                             children: [
+                              const SizedBox(
+                                height: 30,
+                              ),
                               ListTile(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => LoansDetails(
+                                            loanModel: snapshot.data![index]),
+                                      ));
+                                },
                                 iconColor: Colors.green,
                                 tileColor: Colors.green.withOpacity(0.1),
                                 leading: const Icon(Icons.person),
                                 title: Text(
-                                    "Loan Type:${snapshot.data![index].loantype}"),
-                                subtitle: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(snapshot.data![index].interestrate),
-                                    Text(snapshot.data![index].maximumamount),
-                                    Text(snapshot.data![index].minimumamount),
-                                  ],
+                                  "Loan Type: ${snapshot.data![index].loantype.capitalize}",
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.bold),
                                 ),
                               ),
                               const SizedBox(
