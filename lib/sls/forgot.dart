@@ -1,4 +1,8 @@
+import 'package:email_validator/email_validator.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
 import 'package:loans/exports.dart';
 
 class ForgotPass extends StatefulWidget {
@@ -9,6 +13,7 @@ class ForgotPass extends StatefulWidget {
 }
 
 class _ForgotPassState extends State<ForgotPass> {
+  final emailcontroller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height * 0.6;
@@ -30,7 +35,12 @@ class _ForgotPassState extends State<ForgotPass> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     TextFormField(
+                      controller: emailcontroller,
                       keyboardType: TextInputType.emailAddress,
+                      validator: (email) =>
+                          email != null && !EmailValidator.validate(email)
+                              ? "Enter a valid email"
+                              : null,
                       style: const TextStyle(color: Colors.black),
                       cursorColor: Colors.green,
                       decoration: const InputDecoration(
@@ -54,7 +64,12 @@ class _ForgotPassState extends State<ForgotPass> {
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            resetPassword();
+                            setState(() {
+                              emailcontroller.clear();
+                            });
+                          },
                           style: ElevatedButton.styleFrom(
                             shape: const RoundedRectangleBorder(
                                 borderRadius:
@@ -64,7 +79,7 @@ class _ForgotPassState extends State<ForgotPass> {
                           ),
                           child: const Character(
                             fontsize: 20,
-                            headtext: "NEXT",
+                            headtext: "Reset",
                           )),
                     ),
                   ],
@@ -75,5 +90,23 @@ class _ForgotPassState extends State<ForgotPass> {
         ),
       )),
     );
+  }
+
+  Future resetPassword() async {
+    try {
+      await FirebaseAuth.instance
+          .sendPasswordResetEmail(email: emailcontroller.text.trim());
+      Get.snackbar("Success", "Check Email for reset link",
+          snackPosition: SnackPosition.TOP,
+          backgroundColor: Colors.green.withOpacity(0.1),
+          colorText: Colors.black);
+    } on FirebaseAuthException {
+      Get.snackbar(
+        "Error",
+        "Something went wrong",
+        backgroundColor: Colors.red.withOpacity(0.1),
+        colorText: Colors.black,
+      );
+    }
   }
 }

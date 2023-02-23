@@ -33,3 +33,16 @@ class AgentProfile extends GetxController {
     }
   }
 }
+
+class AgentProfile2 extends GetxController {
+  static AgentProfile2 get instance => Get.find();
+
+  final _agenRepo = Get.put(Auth());
+  getEmail() {
+    final email2 = _agenRepo.firebaseUser.value?.email;
+
+    if (email2 != null) {
+      return email2;
+    }
+  }
+}

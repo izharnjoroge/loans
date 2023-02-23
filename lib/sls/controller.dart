@@ -25,3 +25,5 @@ class SignInController extends GetxController {
     Auth.instance.logInWithEmailAndPassword(email, password);
   }
 }
+
+

@@ -1,7 +1,7 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:loans/exports.dart';
-import 'package:email_validator/email_validator.dart';
 
 class Request extends StatefulWidget {
   const Request({super.key});
@@ -95,6 +95,10 @@ class _RequestState extends State<Request> {
                     ),
                     TextFormField(
                       controller: controller.email,
+                      validator: (email) =>
+                          email != null && !EmailValidator.validate(email)
+                              ? "Enter a valid email"
+                              : null,
                       style: const TextStyle(color: Colors.black),
                       cursorColor: Colors.green,
                       textInputAction: TextInputAction.next,

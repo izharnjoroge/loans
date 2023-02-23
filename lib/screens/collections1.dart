@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:loans/exports.dart';
-import 'package:loans/screens/collections2.dart';
 
 class CollectionsView extends StatefulWidget {
   const CollectionsView({super.key});

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:loans/exports.dart';
-import 'package:loans/screens/collections1.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

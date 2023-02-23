@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:loans/exports.dart';
-import 'package:loans/screens/collection.dart';
 
 class GroupView extends StatefulWidget {
   const GroupView({super.key});

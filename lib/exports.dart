@@ -28,3 +28,7 @@ export '../auth/groupauth.dart';
 export '../auth/groupmodel.dart';
 export '../auth/agentauth.dart';
 export '../auth/agentmodel.dart';
+export '../screens/dummy.dart';
+export '../screens/collections1.dart';
+export '../screens/collections2.dart';
+export '../screens/collection.dart';
