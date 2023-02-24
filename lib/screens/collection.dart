@@ -18,6 +18,8 @@ class _CollectionScreenState extends State<CollectionScreen> {
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width * 0.8;
+    final TextEditingController sentBy =
+        TextEditingController(text: context.watch<AgentProvider>().name);
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -210,7 +212,7 @@ class _CollectionScreenState extends State<CollectionScreen> {
                     ),
                     TextFormField(
                       // initialValue: context.watch<AgentProvider>().name,
-                      controller: controller.sentBy,
+                      controller: sentBy,
                       style: const TextStyle(color: Colors.black),
                       cursorColor: Colors.green,
                       textInputAction: TextInputAction.done,
@@ -219,7 +221,7 @@ class _CollectionScreenState extends State<CollectionScreen> {
                           Icons.key,
                           color: Colors.green,
                         ),
-                        labelText: "Amount",
+                        labelText: "Agent",
                         labelStyle: TextStyle(color: Colors.green),
                         focusedBorder: UnderlineInputBorder(
                           borderSide: BorderSide(color: Colors.green),
@@ -247,7 +249,7 @@ class _CollectionScreenState extends State<CollectionScreen> {
                                 amount2: controller.amount2.text.trim(),
                                 member3: controller.member3.text.trim(),
                                 amount3: controller.amount3.text.trim(),
-                                sentBy: controller.sentBy.text.trim(),
+                                sentBy: sentBy.text.trim(),
                               );
                               Collection1Controller.instance
                                   .createRequest(collections);
