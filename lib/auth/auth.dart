@@ -31,11 +31,9 @@ class Auth extends GetxController {
           : Get.to(() => const WelcomeScreen());
     } on FirebaseAuthException catch (e) {
       final ex = SignUpWithEmailAndPasswordFailure.code(e.code);
-      print("FIREBASE AUTH EXCEPTION - ${ex.message}");
       throw ex;
     } catch (_) {
       const ex = SignUpWithEmailAndPasswordFailure();
-      print("EXCEPTION - ${ex.message}");
       throw ex;
     }
   }
@@ -48,11 +46,9 @@ class Auth extends GetxController {
           : Get.to(() => const WelcomeScreen());
     } on FirebaseAuthException catch (e) {
       final ex = SignUpWithEmailAndPasswordFailure.code(e.code);
-      print("FIREBASE AUTH EXCEPTION - ${ex.message}");
       throw ex;
     } catch (_) {
       const ex = SignUpWithEmailAndPasswordFailure();
-      print("EXCEPTION - ${ex.message}");
       throw ex;
     }
   }

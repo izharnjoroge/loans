@@ -13,7 +13,7 @@ class Collection1Controller extends GetxController {
   final amount2 = TextEditingController();
   final member3 = TextEditingController();
   final amount3 = TextEditingController();
-  // final sentBy = TextEditingController();
+  final sentBy = TextEditingController();
 
   final _db = FirebaseFirestore.instance;
 

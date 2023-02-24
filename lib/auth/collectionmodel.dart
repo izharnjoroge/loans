@@ -12,7 +12,7 @@ class CollectionModel {
   final String amount2;
   final String member3;
   final String amount3;
-  // final String sentBy;
+  final String sentBy;
 
   const CollectionModel({
     this.id,
@@ -23,7 +23,7 @@ class CollectionModel {
     required this.amount2,
     required this.member3,
     required this.amount3,
-    // required this.sentBy,
+    required this.sentBy,
   });
   toJson() {
     return {
@@ -34,7 +34,7 @@ class CollectionModel {
       "Amount2": amount2,
       "Member3": member3,
       "Amount3": amount3,
-      // "AgentName": sentBy,
+      "AgentName": sentBy,
     };
   }
 
@@ -50,7 +50,7 @@ class CollectionModel {
       amount2: data["Amount2"],
       member3: data["Member3"],
       amount3: data["Amount3"],
-      // sentBy: data["AgentName"],
+      sentBy: data["AgentName"],
     );
   }
 }

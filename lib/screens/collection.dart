@@ -1,28 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:loans/exports.dart';
-import 'dummy.dart' as global;
+import 'package:provider/provider.dart';
 
 // ignore: must_be_immutable
 class CollectionScreen extends StatefulWidget {
   const CollectionScreen({super.key});
-  // final AgentModel agentName ;
-  // late String name1 = agentName.name;
+
   @override
   State<CollectionScreen> createState() => _CollectionScreenState();
 }
 
 class _CollectionScreenState extends State<CollectionScreen> {
-  // late String name2;
-
-  //  @override
-  // void initState() {
-  //   super.initState();
-  //   name2 = widget.name1;
-  // }
   final _formKey = GlobalKey<FormState>();
   final controller = Get.put(Collection1Controller());
-  final controller2 = Get.put(AgentProfile2());
 
   @override
   Widget build(BuildContext context) {
@@ -217,30 +208,30 @@ class _CollectionScreenState extends State<CollectionScreen> {
                     const SizedBox(
                       height: 30,
                     ),
-                    // TextFormField(
-                    //   initialValue: name2,
-                    //   controller: controller.sentBy,
-                    //   style: const TextStyle(color: Colors.black),
-                    //   cursorColor: Colors.green,
-                    //   textInputAction: TextInputAction.done,
-                    //   decoration: const InputDecoration(
-                    //     prefixIcon: Icon(
-                    //       Icons.key,
-                    //       color: Colors.green,
-                    //     ),
-                    //     labelText: "Amount",
-                    //     labelStyle: TextStyle(color: Colors.green),
-                    //     focusedBorder: UnderlineInputBorder(
-                    //       borderSide: BorderSide(color: Colors.green),
-                    //     ),
-                    //     enabledBorder: UnderlineInputBorder(
-                    //       borderSide: BorderSide(color: Colors.green),
-                    //     ),
-                    //   ),
-                    // ),
-                    // const SizedBox(
-                    //   height: 30,
-                    // ),
+                    TextFormField(
+                      // initialValue: context.watch<AgentProvider>().name,
+                      controller: controller.sentBy,
+                      style: const TextStyle(color: Colors.black),
+                      cursorColor: Colors.green,
+                      textInputAction: TextInputAction.done,
+                      decoration: const InputDecoration(
+                        prefixIcon: Icon(
+                          Icons.key,
+                          color: Colors.green,
+                        ),
+                        labelText: "Amount",
+                        labelStyle: TextStyle(color: Colors.green),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.green),
+                        ),
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.green),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 30,
+                    ),
                     Align(
                       alignment: Alignment.center,
                       child: SizedBox(
@@ -256,7 +247,7 @@ class _CollectionScreenState extends State<CollectionScreen> {
                                 amount2: controller.amount2.text.trim(),
                                 member3: controller.member3.text.trim(),
                                 amount3: controller.amount3.text.trim(),
-                                // sentBy: controller.sentBy.text.trim(),
+                                sentBy: controller.sentBy.text.trim(),
                               );
                               Collection1Controller.instance
                                   .createRequest(collections);

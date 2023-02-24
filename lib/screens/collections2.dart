@@ -173,6 +173,29 @@ class CollectionsView2 extends StatelessWidget {
                   const SizedBox(
                     height: 30,
                   ),
+                  TextFormField(
+                    initialValue: collectionModel.sentBy,
+                    style: const TextStyle(color: Colors.black),
+                    cursorColor: Colors.green,
+                    textInputAction: TextInputAction.next,
+                    // ignore: prefer_const_constructors
+                    decoration: InputDecoration(
+                      labelText: "Agent",
+                      labelStyle: const TextStyle(
+                          fontSize: 30, fontWeight: FontWeight.bold),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20),
+                        borderSide: const BorderSide(color: Colors.green),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20),
+                        borderSide: const BorderSide(color: Colors.green),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
                 ],
               ),
             )),
